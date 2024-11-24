@@ -6,19 +6,20 @@ The main branch contains the source code of the handler implemented for APIM 4.1
 # Build the project 
 
 Execute the following command from the root directory of the project to build
-
-mvn clean install 
+```sh
+mvn clean install
+```
 
 # Configuration of JAR file
 
-Copy the built JAR artifact and add it inside the <APIM_HOME>/repository/components/lib directory and start the server to load the required classes.
+Copy the built JAR artifact and add it inside the `<APIM_HOME>/repository/components/lib` directory and start the server to load the required classes.
 
 # Configuration of Velocity Template 
 
 Add the required handler class to the velocity_template.xml to include the handler in synapse definition of API when redeploying.
 
-Navigate to <APIM_HOME>/repository/resources/api_templates/velocity_template.xml and add the below changes.
-
+Navigate to `<APIM_HOME>/repository/resources/api_templates/velocity_template.xml` and add the below changes.
+```xml
 <handlers xmlns="http://ws.apache.org/ns/synapse">
 <handler class="com.sample.handlers.CustomApikeyHeaderHandler"/>
                 #foreach( $handler in $handlers )
@@ -35,18 +36,11 @@ Navigate to <APIM_HOME>/repository/resources/api_templates/velocity_template.xml
                 #if($enableSchemaValidation)
 <handler class="org.wso2.carbon.apimgt.gateway.handlers.security.SchemaValidator"/>
                 #end
-
+```
 Save the velocity_template.xml and Restart the server to reflect the changes.
 
-# Configuration of mediation sequence 
+# Configuration of mediation sequence  
 
 Add the mediation sequence for header mapping to get the "preserveApikey" property from the handler class to the new header "backend-apikey" which will be passed to the backend.
 
-<sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--In">
- <log level="custom">
-  <property name="Custom_APIKEY" expression="get-property('preserveApikey')"/>
- </log>
-<header name="backend-apikey" expression="get-property('preserveApikey')" scope="transport" />
-</sequence>
-
-Navigate to Policies tab from the publisher portal under the API Configurations and add new policy using the above mediation.
+Navigate to Policies tab from the publisher portal under the API Configurations and add new policy using the `sample-insequence-to-preserve-apikey.j2 ` mediation file.
