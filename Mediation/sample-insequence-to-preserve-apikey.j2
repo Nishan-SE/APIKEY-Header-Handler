@@ -1,1 +1,6 @@
-
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--In">
+ <log level="custom">
+  <property name="Custom_APIKEY" expression="get-property('preserveApikey')"/>
+ </log>
+<header name="backend-apikey" expression="get-property('preserveApikey')" scope="transport" />
+</sequence>
