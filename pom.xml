@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sample.handlers</groupId>
-    <artifactId>custim-apikey-header-handler</artifactId>
+    <artifactId>custom-apikey-header-handler</artifactId>
     <version>1.0.0</version>
     <packaging>bundle</packaging>
 
