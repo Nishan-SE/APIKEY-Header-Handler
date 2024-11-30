@@ -1,5 +1,5 @@
 # APIKEY-Header-Handler
-This is a custom handler implementation to preserve the API KEY and pass the API KEY to the backend server per API level in WSO2 API Manager.
+This is a custom handler implementation to conserve the API KEY and pass the API KEY to the backend server per API level in WSO2 API Manager.
 
 The main branch contains the source code of the handler implemented for APIM 4.1.0. Please make a clone of this repository and update the dependencies then build the handler to support in other versions of the WSO2 API Manager.
 
